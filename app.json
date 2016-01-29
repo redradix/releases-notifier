@@ -1,10 +1,18 @@
 {
   "name": "Dependencies Releases Notifier",
-  "description": "Send email when any dependency specified releases a major version",
-  "repository": "https://bitbucket.org/redradix/major-release-notifier",
+  "description": "Send email when any dependency specified releases a major version (or minor if selected)",
+  "repository": "https://github.com/redradix/releases-notifier",
   "addons": [
     "redistogo",
     "scheduler:standard",
     "sendgrid"
-  ]
+  ],
+  "env": {
+    "PACKAGE_JSON_URLS": "",
+    "EMAILS": "",
+    "MINOR_DEPENDENCIES": "",
+    "SENDER_EMAIL": "",
+    "SENDER_NAME": "",
+    "SENDGRID_KEY": ""
+  }
 }
