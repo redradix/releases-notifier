@@ -12,7 +12,6 @@
     "EMAILS": "",
     "MINOR_DEPENDENCIES": "",
     "SENDER_EMAIL": "",
-    "SENDER_NAME": "",
-    "SENDGRID_KEY": ""
+    "SENDER_NAME": "Dependencies Releases Nofifier"
   }
 }
