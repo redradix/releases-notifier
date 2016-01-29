@@ -28,4 +28,4 @@
 
 - **redistogo**. To keep record of the versions already notified
 - **scheduler:standard**. To run the script again and again
-- **sendgrid**
+- **sendgrid**. To send the emails
