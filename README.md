@@ -1,5 +1,7 @@
-## Install
-- Click on the 'Deploy to Heroku' button
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+# Install
+- Click on the 'Deploy to Heroku' button on a new tab
 - There you can choose a name for your app and the location where it will run
 - Then make sure it has automatically selected the add-ons stated below
 - Config variables are to be filled in as stated below too (*except for SENDGRID_KEY* and REDISTOGO_URL*)
@@ -11,8 +13,6 @@
 - Copy the generated key and paste it on SENDGRID_KEY, back on Heroku config vars
 - Now go to 'Resources', desactivate 'web', and activate 'worker' (*using the pencils and the switchs*)
 - Finally click on 'Heroku Scheduler' -> 'Add new job', fill in `node index.js`, frequency the one you want and save
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ### ENV variables needed
 
