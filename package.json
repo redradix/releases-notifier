@@ -1,0 +1,17 @@
+{
+  "name": "Dependencies Releases Notifier",
+  "version": "1.0.0",
+  "description": "Send email when any dependency specified releases a major version (or minor if selected)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Daniel Grijuela",
+  "license": "ISC",
+  "dependencies": {
+    "es6-promise": "^3.0.2",
+    "isomorphic-fetch": "^2.2.1",
+    "redis": "^2.4.2",
+    "sendgrid": "^2.0.0"
+  }
+}
