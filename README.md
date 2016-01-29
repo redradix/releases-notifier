@@ -26,6 +26,6 @@
 
 ### Add-ons needed:
 
-- redistogo
-- scheduler:standard (command: node index.js)
-- sendgrid
+- **redistogo**. To keep record of the versions already notified
+- **scheduler:standard**. To run the script again and again
+- **sendgrid**
