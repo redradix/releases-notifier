@@ -12,7 +12,7 @@ const client = redis.createClient({url: process.env.REDISTOGO_URL});
 const npmUrl = 'https://www.npmjs.com/package/';
 
 const versionRegex = /(\d{1,2}\.\d{1,2}\.\d{1,2})/;
-const npmVersionRegex = /(\d{1,2}\.\d{1,2}\.\d{1,2}).*\<\/strong\>\s+is the latest/;
+const npmVersionRegex = /(\d{1,2}\.\d{1,2}\.\d{1,2})\<\/strong\>\s+is the latest/;
 const majorVersionRegex = /(\d{1,2})\.\d{1,2}\.\d{1,2}/;
 const minorVersionRegex = /\d{1,2}\.(\d{1,2})\.\d{1,2}/;
 
@@ -40,10 +40,12 @@ packageJsonUrls.forEach(packageJsonUrl => {
       let dependencyPackageJsonVersion = allDependencies[dependency].match(versionRegex)[1];
       client.set(dependency, dependencyPackageJsonVersion);
       getLastVersion(dependency).then(lastVersion => {
-        client.get(dependency, (err, dependencyPackageJsonVersion) => {
-          if (err) console.error('error setting the package json version');
-          detectMajorVersion(dependency, dependencyPackageJsonVersion, lastVersion, packageJsonUrl);
-        })
+        if (lastVersion) {
+          client.get(dependency, (err, dependencyPackageJsonVersion) => {
+            if (err) console.error('error setting the package json version');
+            detectMajorVersion(dependency, dependencyPackageJsonVersion, lastVersion, packageJsonUrl);
+          })
+        }
       });
     });
   })
@@ -58,7 +60,12 @@ let getLastVersion = (dependency) => {
     return response.text();
   })
   .then(text => {
-    return text.match(npmVersionRegex)[1];
+    let match = text.match(npmVersionRegex);
+    if (match) {
+      return match[1];
+    } else {
+      return false;
+    }
   })
   .catch(error => {
     console.error('error: ' + error);
